@@ -8,10 +8,11 @@ routes.get('/users',(req, res)=>{
   return res.status(200).json(database)
 })
 routes.post('/users', (req, res) => {
-  const body = req.body
-    console.log(body);
-  return res.json(body)
-  // console.log(req.body)
+  const {name} = req.body
+    database.push(name)
+    // console.log(database);
+  const respuesta =res.status(201).json({'mensage': `usuario ${name} creado`})
+  return respuesta
 })
 // GET - leer datos,
 // POST - crear datos,

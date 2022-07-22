@@ -1,15 +1,10 @@
-import { Router } from "express";
-import { usersController } from "./controllers/usersController.js";
-
-const routes = Router();
-
-
-routes.get('/users', usersController.listarUsuario)
-
-routes.post('/users', usersController.crearUsuario )
-// GET - leer datos,
-// POST - crear datos,
-// PUT/PATCH - editar datos,
-// DELETE - borrar datos,
-
-export { routes }
+"use strict";
+exports.__esModule = true;
+exports.routes = void 0;
+var express_1 = require("express");
+var usersController_1 = require("./controllers/usersController");
+var routes = (0, express_1.Router)();
+exports.routes = routes;
+var usersController = new usersController_1.UsersController();
+routes.get('/users', usersController.listarUsuario);
+routes.post('/users', usersController.crearUsuario);

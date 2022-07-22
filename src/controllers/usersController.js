@@ -1,18 +1,21 @@
-import {database} from "../database.js"
-
-const usersController = {
-  crearUsuario(req, res) { 
-  const {name} = req.body
-
-  if(name.length < 1){
-    return res.status(403).json({mensage: 'no se permite usuario vacio'})
-  }
-
-  database.push(name)
-  return res.status(201).json({'mensage': `usuario: ${name} creado`})
-  },
-  listarUsuario(req, res){ 
-  return res.status(200).json(database)
-  }
-}
- export {usersController}
+"use strict";
+exports.__esModule = true;
+exports.UsersController = void 0;
+var database_1 = require("../database");
+var UsersController = /** @class */ (function () {
+    function UsersController() {
+    }
+    UsersController.prototype.crearUsuario = function (request, response) {
+        var name = request.body.name;
+        if (name.length < 1) {
+            return response.status(403).json({ mensagem: 'Não é possível criar usuários sem um nome' });
+        }
+        database_1.database.push(name);
+        return response.status(201).json({ 'mensagem': "Usu\u00E1rio ".concat(name, " criado") });
+    };
+    UsersController.prototype.listarUsuario = function (request, response) {
+        return response.status(200).json(database_1.database);
+    };
+    return UsersController;
+}());
+exports.UsersController = UsersController;
